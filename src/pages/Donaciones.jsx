@@ -1,7 +1,7 @@
-import React from "react";
-import "./Donaciones.css";
+import React from "react"; //se utiliza para importar la biblioteca React en un archivo JavaScript que usará JSX//
+import "./Donaciones.css"; //sirve para importar un archivo de estilos CSS dentro del componente React//
 
-export default function Donaciones() {
+export default function Donaciones() { //sirve para declarar un componente funcional de React llamado Donaciones//
   return (
     <>
       <div id="centrar">

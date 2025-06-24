@@ -1,7 +1,7 @@
-import React from "react";
-import "./Quienes.css";
+import React from "react"; //se utiliza para importar la biblioteca React en un archivo JavaScript que usará JSX//
+import "./Quienes.css"; //sirve para importar un archivo de estilos CSS dentro del componente React//
 
-export default function Quienes() {
+export default function Quienes() { //sirve para declarar un componente funcional de React llamado Quienes//
   return (
     <div id="centrar">
       <article>

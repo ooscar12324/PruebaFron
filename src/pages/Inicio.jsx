@@ -1,7 +1,7 @@
-import React from "react";
-import "./Inicio.css";
+import React from "react"; //se utiliza para importar la biblioteca React en un archivo JavaScript que usará JSX//
+import "./Inicio.css"; //sirve para importar un archivo de estilos CSS dentro del componente React//
 
-export default function Inicio() {
+export default function Inicio() { //sirve para declarar un componente funcional de React llamado inicio//
   return (
     <div id="container">
       <img src="/imagenes/_baneer.jpg" alt="Banner de la página" id="banner" />

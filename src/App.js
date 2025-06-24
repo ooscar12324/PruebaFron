@@ -1,5 +1,6 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from "react"; //se utiliza para importar la biblioteca React en un archivo JavaScript que usará JSX//
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; 
+//sirve para importar las herramientas necesarias para la navegación entre páginas (rutas) en una aplicación React usando la biblioteca react-router-dom.//
 
 // Componentes comunes
 import Navbar from "./components/Navbar";

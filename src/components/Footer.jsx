@@ -1,5 +1,5 @@
-import React from "react";
-import "./Footer.css";
+import React from "react"; //se utiliza para importar la biblioteca React en un archivo JavaScript que usará JSX//
+import "./Footer.css"; //sirve para importar un archivo de estilos CSS dentro del componente React//
 
 export default function Footer() {
   return (

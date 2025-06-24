@@ -6,6 +6,7 @@ import App from './App'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  //sirve para iniciar y mostrar tu aplicación React en la página web.//
   <React.StrictMode>
     <BrowserRouter>
       <App />
