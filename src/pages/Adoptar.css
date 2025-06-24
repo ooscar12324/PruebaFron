@@ -1,0 +1,109 @@
+form {
+  background: #fff;
+  max-width: 600px;
+  margin: 2rem auto 3rem;
+  padding: 2.5rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease;
+}
+
+form:hover {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+form h2 {
+  text-align: center;
+  color: #10443b;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+form p {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #10443b;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 12px 10px;
+  margin-bottom: 1.5rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  height: 45px;
+  box-sizing: border-box;
+  background-color: white;
+  appearance: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: #10443b;
+  outline: none;
+  box-shadow: 0 0 6px #10443b;
+}
+
+select {
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px 12px;
+  padding-right: 35px;
+  cursor: pointer;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+  color: #10443b;
+  font-weight: 600;
+}
+
+input[type="submit"] {
+  background-color: #10443b;
+  color: gold;
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  letter-spacing: 1px;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  background-color: #0b372f;
+  box-shadow: 0 0 12px gold;
+  outline: none;
+}
+
+@media (max-width: 480px) {
+  form {
+    margin: 2rem 1rem 3rem;
+    padding: 2rem 1.5rem;
+  }
+}

@@ -1,0 +1,33 @@
+footer {
+  background-color: #10443b;
+  color: gold;
+  text-shadow:
+    -1px -1px 0 black,
+    1px -1px 0 black,
+    -1px  1px 0 black,
+    1px  1px 0 black;
+  text-align: center;
+  padding: 20px;
+  margin-top: 3em;
+}
+
+footer .social-links {
+  margin-bottom: 1em;
+}
+
+footer .social-links a {
+  margin: 0 10px;
+}
+
+footer .social-links img {
+  width: 32px;
+  height: 32px;
+}
+
+@media (max-width: 768px) {
+  footer .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
