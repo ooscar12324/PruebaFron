@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react"; //se utiliza en React para importar el núcleo de la biblioteca React y dos de sus hooks más comunes//
-import "./Adoptar.css"; //sirve para importar un archivo de estilos CSS dentro del componente React//
+import React, { useState, useEffect } from "react";
+import "./Adoptar.css";
 
-export default function Adoptar() { //sirve para definir y exportar un componente funcional de React llamado Adoptar//
+export default function Adoptar() {
   const [formulario, setFormulario] = useState({
     fname: "",
     lname: "",
@@ -14,13 +14,13 @@ export default function Adoptar() { //sirve para definir y exportar un component
   });
 
   const [enviados, setEnviados] = useState(() => {
-    // Cargar datos guardados al inicio (si existen)
     const datosGuardados = localStorage.getItem("solicitudesAdopcion");
     return datosGuardados ? JSON.parse(datosGuardados) : [];
   });
 
+  const [editIndex, setEditIndex] = useState(null); // Nuevo estado: para saber si se está editando
+
   const handleChange = (e) => {
-    //sirve para manejar los cambios de un input o campo de formulario//
     const { name, value, type, checked } = e.target;
     setFormulario((prev) => ({
       ...prev,
@@ -29,9 +29,20 @@ export default function Adoptar() { //sirve para definir y exportar un component
   };
 
   const handleSubmit = (e) => {
-    //generalmente se usa en React para manejar el envío de un formulario//
     e.preventDefault();
-    const nuevaLista = [...enviados, formulario];
+
+    let nuevaLista;
+
+    if (editIndex !== null) {
+      // Actualizar existente
+      nuevaLista = [...enviados];
+      nuevaLista[editIndex] = formulario;
+      setEditIndex(null);
+    } else {
+      // Agregar nuevo
+      nuevaLista = [...enviados, formulario];
+    }
+
     setEnviados(nuevaLista);
     setFormulario({
       fname: "",
@@ -43,15 +54,37 @@ export default function Adoptar() { //sirve para definir y exportar un component
       email: "",
       responsabilidad: false,
     });
-    // Guardar en localStorage//
     localStorage.setItem("solicitudesAdopcion", JSON.stringify(nuevaLista));
+  };
+
+  const handleEditar = (index) => {
+    setFormulario(enviados[index]);
+    setEditIndex(index);
+  };
+
+  const handleEliminar = (index) => {
+    const nuevaLista = enviados.filter((_, i) => i !== index);
+    setEnviados(nuevaLista);
+    localStorage.setItem("solicitudesAdopcion", JSON.stringify(nuevaLista));
+    if (editIndex === index) {
+      setEditIndex(null);
+      setFormulario({
+        fname: "",
+        lname: "",
+        fecha: "",
+        telefono: "",
+        animal: "",
+        opcion: "",
+        email: "",
+        responsabilidad: false,
+      });
+    }
   };
 
   return (
     <>
       <form id="guardar" onSubmit={handleSubmit}>
-        {}
-        <h2>¿Quieres adoptar?</h2>
+        <h2>{editIndex !== null ? "Editar solicitud" : "¿Quieres adoptar?"}</h2>
         <p>Ingresa tus datos personales y preferencias de adopción</p>
 
         <label htmlFor="fname">Nombre:</label>
@@ -102,9 +135,7 @@ export default function Adoptar() { //sirve para definir y exportar un component
           onChange={handleChange}
           required
         >
-          <option value="" disabled>
-            Seleccione una opción
-          </option>
+          <option value="" disabled>Seleccione una opción</option>
           <option value="perro">Perro</option>
           <option value="gato">Gato</option>
         </select>
@@ -117,9 +148,7 @@ export default function Adoptar() { //sirve para definir y exportar un component
           onChange={handleChange}
           required
         >
-          <option value="" disabled>
-            Seleccione una opción
-          </option>
+          <option value="" disabled>Seleccione una opción</option>
           <option value="SI">Sí</option>
           <option value="NO">No</option>
         </select>
@@ -146,7 +175,10 @@ export default function Adoptar() { //sirve para definir y exportar un component
           Acepto ser responsable del cuidado del animal adoptado
         </label>
 
-        <input type="submit" value="Enviar" />
+        <input
+          type="submit"
+          value={editIndex !== null ? "Actualizar" : "Enviar"}
+        />
       </form>
 
       <div className="resumen-container">
@@ -156,7 +188,7 @@ export default function Adoptar() { //sirve para definir y exportar un component
             <p>Aún no hay solicitudes.</p>
           ) : (
             <ul>
-              {enviados.map((data, i) => ( //sirve para mostrar una lista de personas que enviaron un formulario en React//
+              {enviados.map((data, i) => (
                 <li key={i} style={{ marginBottom: "1rem" }}>
                   <strong>
                     {data.fname} {data.lname}
@@ -167,6 +199,9 @@ export default function Adoptar() { //sirve para definir y exportar un component
                   Prefiere: {data.animal} | ¿Tuvo mascota?: {data.opcion}
                   <br />
                   Email: {data.email}
+                  <br />
+                  <button onClick={() => handleEditar(i)}>Editar</button>{" "}
+                  <button onClick={() => handleEliminar(i)}>Eliminar</button>
                 </li>
               ))}
             </ul>
@@ -176,4 +211,3 @@ export default function Adoptar() { //sirve para definir y exportar un component
     </>
   );
 }
-
