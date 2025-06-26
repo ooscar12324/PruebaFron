@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import "./Adoptar.css";
+import React, { useState, useEffect } from "react"; //sirve para importar React y dos de sus hooks más usados//
+import "./Adoptar.css"; //sirve para importar un archivo de estilos CSS dentro del componente React//
 
 export default function Adoptar() {
   const [formulario, setFormulario] = useState({
@@ -18,7 +18,7 @@ export default function Adoptar() {
     return datosGuardados ? JSON.parse(datosGuardados) : [];
   });
 
-  const [editIndex, setEditIndex] = useState(null); // Nuevo estado: para saber si se está editando
+  const [editIndex, setEditIndex] = useState(null); // Nuevo estado: para saber si se está editando //
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -34,12 +34,12 @@ export default function Adoptar() {
     let nuevaLista;
 
     if (editIndex !== null) {
-      // Actualizar existente
+      // Actualizar existente //
       nuevaLista = [...enviados];
       nuevaLista[editIndex] = formulario;
       setEditIndex(null);
     } else {
-      // Agregar nuevo
+      // Agregar nuevo //
       nuevaLista = [...enviados, formulario];
     }
 
@@ -81,9 +81,12 @@ export default function Adoptar() {
     }
   };
 
+
   return (
+    //onSubmit se usa en formularios en React para detectar cuándo el usuario envía el formulario y ejecutar una función específica cuando eso ocurre //
+    //handleChange es una función que se usa para actualizar el estado//
     <>
-      <form id="guardar" onSubmit={handleSubmit}>
+      <form id="guardar" onSubmit={handleSubmit}> 
         <h2>{editIndex !== null ? "Editar solicitud" : "¿Quieres adoptar?"}</h2>
         <p>Ingresa tus datos personales y preferencias de adopción</p>
 
