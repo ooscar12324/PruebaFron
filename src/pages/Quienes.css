@@ -76,6 +76,31 @@ article p {
   margin-top: 10px;
   color: #3a3a3a;
 }
+.miembro ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+}
+
+.miembro ul li {
+  background-color: #dcecc8;
+  color: #10443b;
+  margin: 6px 0;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.miembro ul li::before {
+  content: "🐾";
+  font-size: 1rem;
+}
+
 
 @media (max-width: 768px) {
   .miembros {
